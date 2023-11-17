@@ -4,6 +4,7 @@
 
 first setup the environment:
 > cd backend
+
 > py -3 -m venv .venv
 
 then activate the environment:
