@@ -13,6 +13,7 @@ import { setContext, getLocation, getRouteData, normalizeError } from './utils'
 /* Plugins */
 
 import nuxt_plugin_plugin_5ade834e from 'nuxt_plugin_plugin_5ade834e' // Source: .\\components\\plugin.js (mode: 'all')
+import nuxt_plugin_plugin_6242ab66 from 'nuxt_plugin_plugin_6242ab66' // Source: .\\vuetify\\plugin.js (mode: 'all')
 import nuxt_plugin_axios_2694071e from 'nuxt_plugin_axios_2694071e' // Source: .\\axios.js (mode: 'all')
 
 // Component: <ClientOnly>
@@ -63,7 +64,7 @@ async function createApp(ssrContext, config = {}) {
   // here we inject the router and store to all child components,
   // making them available everywhere as `this.$router` and `this.$store`.
   const app = {
-    head: {"title":"Health Detector","htmlAttrs":{"lang":"en"},"meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":""},{"name":"format-detection","content":"telephone=no"}],"link":[{"rel":"stylesheet","type":"text\u002Fcss","href":"https:\u002F\u002Fcdnjs.cloudflare.com\u002Fajax\u002Flibs\u002Fmaterial-design-iconic-font\u002F2.2.0\u002Fcss\u002Fmaterial-design-iconic-font.min.css","async":true,"defer":true}],"script":[],"style":[]},
+    head: {"title":"Health Detective","htmlAttrs":{"lang":"en"},"meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":""},{"name":"format-detection","content":"telephone=no"}],"link":[{"rel":"stylesheet","type":"text\u002Fcss","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss2?family=Playfair+Display&family=Roboto:wght@500&display=swap"},{"rel":"stylesheet","type":"text\u002Fcss","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss2?family=Lato&family=Playfair+Display&family=Roboto:wght@500&display=swap"},{"rel":"stylesheet","type":"text\u002Fcss","href":"https:\u002F\u002Fcdnjs.cloudflare.com\u002Fajax\u002Flibs\u002Fmaterial-design-iconic-font\u002F2.2.0\u002Fcss\u002Fmaterial-design-iconic-font.min.css","async":true,"defer":true},{"rel":"stylesheet","type":"text\u002Fcss","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss?family=Roboto:100,300,400,500,700,900&display=swap"},{"rel":"stylesheet","type":"text\u002Fcss","href":"https:\u002F\u002Fcdn.jsdelivr.net\u002Fnpm\u002F@mdi\u002Ffont@latest\u002Fcss\u002Fmaterialdesignicons.min.css"}],"script":[],"style":[]},
 
     router,
     nuxt: {
@@ -179,6 +180,10 @@ async function createApp(ssrContext, config = {}) {
 
   if (typeof nuxt_plugin_plugin_5ade834e === 'function') {
     await nuxt_plugin_plugin_5ade834e(app.context, inject)
+  }
+
+  if (typeof nuxt_plugin_plugin_6242ab66 === 'function') {
+    await nuxt_plugin_plugin_6242ab66(app.context, inject)
   }
 
   if (typeof nuxt_plugin_axios_2694071e === 'function') {

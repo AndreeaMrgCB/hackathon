@@ -1,5 +1,11 @@
 {
   "AppPage": {
     "description": "Auto imported from components/AppPage.vue"
+  },
+  "HeroComponent": {
+    "description": "Auto imported from components/HeroComponent.vue"
+  },
+  "WordRotator": {
+    "description": "Auto imported from components/WordRotator.vue"
   }
 }

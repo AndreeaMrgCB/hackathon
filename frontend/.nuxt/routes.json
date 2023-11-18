@@ -1,5 +1,12 @@
 [
   {
+    "name": "diagnose",
+    "path": "/diagnose",
+    "component": "C:\\\\Projects\\\\hackathon\\\\hackathon\\\\frontend\\\\pages\\\\diagnose.vue",
+    "chunkName": "pages/diagnose",
+    "_name": "_0b92e961"
+  },
+  {
     "name": "index",
     "path": "/",
     "component": "C:\\\\Projects\\\\hackathon\\\\hackathon\\\\frontend\\\\pages\\\\index.vue",

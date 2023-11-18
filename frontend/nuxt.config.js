@@ -9,7 +9,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'Health Detector',
+    title: 'Health Detective',
     htmlAttrs: {
       lang: 'en',
     },
@@ -20,7 +20,16 @@ export default {
       { name: 'format-detection', content: 'telephone=no' },
     ],
     link: [
-
+      {
+        rel: 'stylesheet',
+        type: 'text/css',
+        href: 'https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto:wght@500&display=swap',
+      },
+      {
+        rel: 'stylesheet',
+        type: 'text/css',
+        href: 'https://fonts.googleapis.com/css2?family=Lato&family=Playfair+Display&family=Roboto:wght@500&display=swap',
+      },
       {
         rel: 'stylesheet',
         type: 'text/css',
@@ -48,18 +57,12 @@ export default {
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: ['~assets/scss/main.scss'],
 
-/*   styleResources: {
+   styleResources: {
     scss: [
-      './assets/scss/01-mixins/*.scss',
-      './assets/scss/02-design-tokens/_breakpoints.scss',
-      './assets/scss/02-design-tokens/_colours.scss',
-      './assets/scss/02-design-tokens/_font-styles.scss',
-      './assets/scss/02-design-tokens/_fonts.scss',
-      './assets/scss/02-design-tokens/_sizing.scss',
-      './assets/scss/02-design-tokens/_grid.scss',
-      './assets/scss/02-design-tokens/_layers.scss',
+      './assets/scss/mixins/*.scss',
+      './assets/scss/global/_breakpoints.scss',
     ],
-  }, */
+  },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
@@ -84,6 +87,7 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/eslint
+    '@nuxtjs/vuetify',
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/stylelint
     '@nuxtjs/style-resources',

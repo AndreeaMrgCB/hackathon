@@ -1,5 +1,5 @@
 <template>
-  <AppPage></AppPage>
+  <HeroComponent></HeroComponent>
 </template>
 
 <script>
