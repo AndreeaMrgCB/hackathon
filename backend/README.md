@@ -11,7 +11,7 @@ then activate the environment:
 > .venv\Scripts\activate
 
 then installing flask:
-> pip install Flask
+> pip install Flask scikit-learn pandas flask-restful flask-cors
 
-to run the app call:
+to run the app call from inside the venv:
 > python app.py
