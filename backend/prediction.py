@@ -15,4 +15,9 @@ def predict_disease(config):
     
     prognosis = model.predict(df)
     
-    return prognosis
+    if prognosis == 0:
+        return "Test1"
+    elif prognosis == 1:
+        return "Test2"
+    if prognosis == 2:
+        return "Test3"
