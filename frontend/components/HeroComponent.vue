@@ -53,8 +53,8 @@ export default {
 
   &__image {
     flex: 1 0 50%;
-    background-image: url("@/static/img/Doctor.gif");
-    height: 500px;
+    background-image: url("@/static/img/Doctor-loop.gif");
+    height: 600px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

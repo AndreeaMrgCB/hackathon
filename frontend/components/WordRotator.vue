@@ -22,7 +22,7 @@ export default {
     },
     words: {
         type: Array,
-        default: () => ["Adults", "Seniors", "Children"],
+        default: () => ["Adults", "Children", "Parents", "Seniors", "YOU"],
     }
   },
 
