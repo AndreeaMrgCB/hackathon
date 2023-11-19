@@ -1,23 +1,25 @@
 <template>
   <div>
-    <div class="hero">
-      <div class="hero__image"></div>
+    <div class="hero container--wide">
       <div class="hero__content">
         <h1 class="hero__text">
-          Input <br />Discover <br />Empower Your Health
+          Input <br />Discover <br /><span class="hero__highlight"
+            >Empower Your Health</span
+          >
         </h1>
-<!--         <span class="hero__mask"
+        <!--         <span class="hero__mask"
           >Input <br />Discover <br />Empower Your Health</span
         > -->
         <WordRotator heading="Made for" />
 
-        <a href="/diagnose" role="button" class="hero__button"
+        <a href="#question-wizard" role="button" class="hero__button"
           ><span>Diagnose Me</span></a
         >
       </div>
+      <div class="hero__image"></div>
     </div>
     <section class="description">
-      <p class="description__paragraph">
+      <p class="description__paragraph container--wide">
         Input your symptoms effortlessly, and discover instant insights to
         empower your health decisions. Say goodbye to uncertainties and hello to
         a healthier, more confident you. Embrace the everyday journey to
@@ -25,6 +27,9 @@
         every day.
       </p>
     </section>
+    <div id="question-wizard">
+    <QuestionWizard />
+    </div>
   </div>
 </template>
 
@@ -39,62 +44,39 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  max-height: 500px;
+  margin-top: 60px;
 
-  &__mask {
-    font-size: 40px;
-    color: transparent;
-    background-clip: text;
-    -webkit-background-clip: text;
-    background-image: url(https://media.giphy.com/media/xULW8Fw2ZhznUptrYA/giphy.gif);
-    background-size: cover;
-    background-position: center;
-    font-weight: 700;
-    text-align: center;
-    text-transform: uppercase;
+  &__highlight {
+    // background-color: $primary;
+    color: $secondary;
   }
 
   &__image {
-    flex: 1 0 70%;
-    background-image: url("@/static/img/hero-img.jpg");
+    flex: 1 0 50%;
+    background-image: url("@/static/img/Doctor.gif");
     height: 500px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
-
-    &::after {
-      background: linear-gradient(to right, transparent 0, #fff 66%);
-      content: "";
-      display: block;
-      height: 100%;
-      position: absolute;
-      bottom: 0;
-      width: 50%;
-      z-index: 100;
-      top: 0;
-      right: initial;
-      left: 38em;
-    }
   }
 
   &__content {
     position: relative;
     z-index: 99999;
-    flex: 1 0 30%;
+    flex: 1 0 50%;
   }
 
   &__text {
-    font-size: 20px;
-    font-family: "Lato", serif;
-    font-size: 30px;
+    font-family: "obvia", serif;
+    font-size: 50px;
     margin-bottom: 50px;
-    max-width: 400px;
+    max-width: 600px;
     text-transform: uppercase;
   }
 
   &__paragraph {
-    font-family: "Lato", sans-serif;
+    font-family: "obvia", sans-serif;
     font-size: 16px;
     max-width: 400px;
     line-height: 20px;
@@ -111,6 +93,7 @@ export default {
     margin: 15px 0;
     min-width: 150px;
     padding: 5px;
+    font-family: 'interstate', sans-serif;;
 
     span {
       position: relative;
@@ -125,14 +108,14 @@ export default {
       padding: 15px 20px;
       transition: 0.3s;
       color: rgb(255, 255, 255);
-      background-color: rgb(54, 56, 55);
+      background-color: rgb(186, 65, 48);
     }
 
     &::before {
       bottom: 0;
       left: 0;
-      border-left: 1px solid rgb(28, 31, 30);
-      border-bottom: 1px solid rgb(28, 31, 30);
+      border-left: 1px solid rgb(186, 65, 48);
+      border-bottom: 1px solid rgb(186, 65, 48);
       width: 10%;
       height: 25%;
       transition: 0.35s;
@@ -145,8 +128,8 @@ export default {
     &::after {
       top: 0;
       right: 0;
-      border-right: 1px solid rgb(28, 31, 30);
-      border-top: 1px solid rgb(28, 31, 30);
+      border-right: 1px solid rgb(186, 65, 48);
+      border-top: 1px solid rgb(186, 65, 48);
       width: 10%;
       height: 25%;
       transition: 0.35s;
@@ -163,15 +146,15 @@ export default {
       &::before {
         bottom: 0;
         left: 0;
-        border-left: 1px solid rgb(28, 31, 30);
-        border-bottom: 1px solid rgb(28, 31, 30);
+        border-left: 1px solid rgb(186, 65, 48);
+        border-bottom: 1px solid rgb(186, 65, 48);
       }
 
       &::after {
         top: 0;
         right: 0;
-        border-right: 1px solid rgb(28, 31, 30);
-        border-top: 1px solid rgb(28, 31, 30);
+        border-right: 1px solid rgb(186, 65, 48);
+        border-top: 1px solid rgb(186, 65, 48);
       }
 
       &::before,
@@ -184,9 +167,14 @@ export default {
 }
 
 .description {
-  max-width: 1440px;
-  padding: 30px 120px;
   text-align: center;
   margin: 0 auto;
+  background-color: $tertiary;
+  color: $white;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  font-family: 'interstate', sans-serif;
+  font-size: 20px;
+  line-height: 30px;
 }
 </style>

@@ -1,5 +1,6 @@
 export { default as AppPage } from '../..\\components\\AppPage.vue'
 export { default as HeroComponent } from '../..\\components\\HeroComponent.vue'
+export { default as QuestionWizard } from '../..\\components\\QuestionWizard.vue'
 export { default as WordRotator } from '../..\\components\\WordRotator.vue'
 
 // nuxt/nuxt.js#8607

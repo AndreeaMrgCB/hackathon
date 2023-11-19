@@ -117,9 +117,8 @@ export default {
 
   h2,
   h3 {
-    font-size: 20px;
-    font-family: "Playfair Display", serif;
-    font-size: 30px;
+    font-family: "obvia", serif;
+    font-size: 35px;
     margin-bottom: 50px;
     max-width: 400px;
     text-transform: uppercase;
@@ -132,10 +131,10 @@ export default {
   .word {
     position: absolute;
     left: 0;
-    width: 480px;
+    width: 520px;
     opacity: 0;
     text-align: center;
-    color: blue;
+    color: $primary;
   }
 
   .letter {

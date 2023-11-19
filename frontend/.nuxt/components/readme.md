@@ -8,4 +8,5 @@ You can directly use them in pages and other components without the need to impo
 
 - `<AppPage>` | `<app-page>` (components/AppPage.vue)
 - `<HeroComponent>` | `<hero-component>` (components/HeroComponent.vue)
+- `<QuestionWizard>` | `<question-wizard>` (components/QuestionWizard.vue)
 - `<WordRotator>` | `<word-rotator>` (components/WordRotator.vue)

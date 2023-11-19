@@ -1,0 +1,104 @@
+{
+    "symptoms": [
+      {
+        "name": "Skin",
+        "items": [
+          {"columnName": "itching", "name": "Itching"},
+          {"columnName": "skin_rash", "name": "Skin Rash"},
+          {"columnName": "nodal_skin_eruptions", "name": "Nodal Skin Eruptions"},
+          {"columnName": "ulcers_on_tongue", "name": "Ulcers on Tongue"},
+          {"columnName": "yellowish_skin", "name": "Yellowish Skin"},
+          {"columnName": "dark_urine", "name": "Dark Urine"},
+          {"columnName": "red_sore_around_nose", "name": "Red Sore Around Nose"},
+          {"columnName": "yellow_crust_ooze", "name": "Yellow Crust Ooze"}
+        ]
+      },
+      {
+        "name": "Limbs",
+        "items": [
+          {"columnName": "joint_pain", "name": "Joint Pain"},
+          {"columnName": "muscle_wasting", "name": "Muscle Wasting"},
+          {"columnName": "weakness_in_limbs", "name": "Weakness in Limbs"},
+          {"columnName": "stiff_neck", "name": "Stiff Neck"},
+          {"columnName": "swelling_joints", "name": "Swelling Joints"},
+          {"columnName": "movement_stiffness", "name": "Movement Stiffness"},
+          {"columnName": "loss_of_balance", "name": "Loss of Balance"},
+          {"columnName": "unsteadiness", "name": "Unsteadiness"},
+          {"columnName": "weakness_of_one_body_side", "name": "Weakness of One Body Side"}
+        ]
+      },
+      {
+        "name": "Chest",
+        "items": [
+          {"columnName": "chest_pain", "name": "Chest Pain"},
+          {"columnName": "fast_heart_rate", "name": "Fast Heart Rate"},
+          {"columnName": "pain_during_bowel_movements", "name": "Pain During Bowel Movements"},
+          {"columnName": "pain_in_anal_region", "name": "Pain in Anal Region"},
+          {"columnName": "bloody_stool", "name": "Bloody Stool"},
+          {"columnName": "palpitations", "name": "Palpitations"}
+        ]
+      },
+      {
+        "name": "Stomach",
+        "items": [
+          {"columnName": "stomach_pain", "name": "Stomach Pain"},
+          {"columnName": "acidity", "name": "Acidity"},
+          {"columnName": "ulcers_on_tongue", "name": "Ulcers on Tongue"},
+          {"columnName": "vomiting", "name": "Vomiting"},
+          {"columnName": "burning_micturition", "name": "Burning Micturition"},
+          {"columnName": "spotting_urination", "name": "Spotting Urination"},
+          {"columnName": "indigestion", "name": "Indigestion"},
+          {"columnName": "abdominal_pain", "name": "Abdominal Pain"},
+          {"columnName": "diarrhoea", "name": "Diarrhoea"},
+          {"columnName": "constipation", "name": "Constipation"},
+          {"columnName": "pain_behind_the_eyes", "name": "Pain Behind the Eyes"},
+          {"columnName": "back_pain", "name": "Back Pain"}
+        ]
+      },
+      {
+        "name": "Face",
+        "items": [
+          {"columnName": "puffy_face_and_eyes", "name": "Puffy Face and Eyes"},
+          {"columnName": "enlarged_thyroid", "name": "Enlarged Thyroid"},
+          {"columnName": "brittle_nails", "name": "Brittle Nails"},
+          {"columnName": "swollen_extremities", "name": "Swollen Extremities"},
+          {"columnName": "excessive_hunger", "name": "Excessive Hunger"},
+          {"columnName": "extra_marital_contacts", "name": "Extra Marital Contacts"},
+          {"columnName": "drying_and_tingling_lips", "name": "Drying and Tingling Lips"},
+          {"columnName": "slurred_speech", "name": "Slurred Speech"}
+        ]
+      },
+      {
+        "name": "General Symptoms",
+        "items": [
+          {"columnName": "sweating", "name": "Sweating"},
+          {"columnName": "anxiety", "name": "Anxiety"},
+          {"columnName": "cold_hands_and_feets", "name": "Cold Hands and Feets"},
+          {"columnName": "mood_swings", "name": "Mood Swings"},
+          {"columnName": "weight_loss", "name": "Weight Loss"},
+          {"columnName": "restlessness", "name": "Restlessness"},
+          {"columnName": "lethargy", "name": "Lethargy"},
+          {"columnName": "patches_in_throat", "name": "Patches in Throat"},
+          {"columnName": "irregular_sugar_level", "name": "Irregular Sugar Level"},
+          {"columnName": "cough", "name": "Cough"},
+          {"columnName": "high_fever", "name": "High Fever"},
+          {"columnName": "sunken_eyes", "name": "Sunken Eyes"},
+          {"columnName": "breathlessness", "name": "Breathlessness"},
+          {"columnName": "sweating", "name": "Sweating"},
+          {"columnName": "dehydration", "name": "Dehydration"},
+          {"columnName": "headache", "name": "Headache"},
+          {"columnName": "yellowish_skin", "name": "Yellowish Skin"},
+          {"columnName": "nausea", "name": "Nausea"},
+          {"columnName": "loss_of_appetite", "name": "Loss of Appetite"},
+          {"columnName": "pain_behind_the_eyes", "name": "Pain Behind the Eyes"},
+          {"columnName": "blurred_and_distorted_vision", "name": "Blurred and Distorted Vision"},
+          {"columnName": "phlegm", "name": "Phlegm"},
+          {"columnName": "throat_irritation", "name": "Throat Irritation"},
+          {"columnName": "redness_of_eyes", "name": "Redness of Eyes"},
+          {"columnName": "sinus_pressure", "name": "Sinus Pressure"},
+          {"columnName": "runny_nose", "name": "Runny Nose"},
+          {"columnName": "congestion", "name": "Congestion"},
+          {"columnName": "weakness_in_limbs", "name": "Weakness in Limbs"},
+          {"columnName": "fast_heart_rate", "name": "Fast Heart Rate"},
+          {"columnName": "pain_during_bowel_movements", "name": "Pain During Bowel Movements"},
+          {"columnName": "pain_in_anal_region", "name": "Pain in Anal Region"}]}]}

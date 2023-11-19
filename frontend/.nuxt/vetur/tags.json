@@ -5,6 +5,9 @@
   "HeroComponent": {
     "description": "Auto imported from components/HeroComponent.vue"
   },
+  "QuestionWizard": {
+    "description": "Auto imported from components/QuestionWizard.vue"
+  },
   "WordRotator": {
     "description": "Auto imported from components/WordRotator.vue"
   }

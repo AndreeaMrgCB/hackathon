@@ -1,7 +1,6 @@
 <template>
   <div data-app>
     <section class="pen-description">
-      <h1>Fill out your symptoms</h1>
     </section>
     <section class="register" v-if="!hasSeenCongrats">
       <div class="register-icon">
@@ -39,21 +38,18 @@
         <section v-show="step === 1">
           <form class="form" method="post" action="#" @submit.prevent="next">
             <div class="form-group">
-              <input
-                id="loyaltyCivilityMr"
-                type="radio"
-                value="1"
-                v-model="customer.gender"
-              />
-              <label class="input-label" for="loyaltyCivilityMr">Male</label>
-
-              <input
-                id="loyaltyCivilityMrs"
-                type="radio"
-                value="2"
-                v-model="customer.gender"
-              />
-              <label class="input-label" for="loyaltyCivilityMrs">Female</label>
+              <v-checkbox
+                v-model="selectedGender"
+                color="#ba4130"
+                label="Male"
+                value="Male"
+              ></v-checkbox>
+              <v-checkbox
+                v-model="selectedGender"
+                color="#ba4130"
+                label="Female"
+                value="Female"
+              ></v-checkbox>
             </div>
 
             <div class="form-group">
@@ -73,8 +69,9 @@
             >
               <p class="cta-color">
                 <span class="link_wrap">
-                  <input type="submit" value="Next" class="link_text" />
-                  <span class="arrow-next"></span>
+                  <button type="submit" value="Next" class="form__button">
+                    <span>Next</span>
+                  </button>
                 </span>
               </p>
             </div>
@@ -82,7 +79,10 @@
         </section>
       </transition>
       <transition name="slide-fade">
-        <section v-show="step === 1">
+        <section v-show="step === 2">
+          <div class="form__heading">
+            What are your symptons, {{ customer.firstName }}?
+          </div>
           <form class="form" method="post" action="#" @submit.prevent="next">
             <div class="form-group">
               <v-expansion-panels>
@@ -90,7 +90,7 @@
                   v-for="(item, i) in symptomsData.symptoms"
                   :key="i"
                 >
-                  <v-expansion-panel-header>
+                  <v-expansion-panel-header color="#ba4130">
                     {{ item.name }}
                   </v-expansion-panel-header>
                   <v-expansion-panel-content>
@@ -103,6 +103,7 @@
                       >
                         <v-checkbox
                           v-model="selectedSymptoms"
+                          color="#ba4130"
                           :label="symptom.name"
                           :value="symptom.name"
                         ></v-checkbox>
@@ -112,17 +113,31 @@
                 </v-expansion-panel>
               </v-expansion-panels>
             </div>
-            <div class="form__symptoms">
-              <p> Your Symptoms are: <span v-if="selectedSymptoms.length">
-                <div v-for="(selected, i) in selectedSymptoms" :key=i>{{selected}}</div></span></p>
+            <div v-if="selectedSymptoms.length" class="form__symptoms">
+              <div>
+                <span>Your Symptoms are:</span>
+                <span>
+                  <div
+                    v-for="(selected, i) in selectedSymptoms"
+                    :key="i"
+                    class="form__symptoms-text"
+                  >
+                    {{ selected }}
+                  </div></span
+                >
+              </div>
             </div>
             <div class="form-group cta-step">
               <div class="cta prev">
                 <p class="cta-color">
                   <span class="link_wrap">
-                    <a class="link_text" href="#" @click.prevent="prev()"
-                      ><span class="arrow-prev"></span>Previous
-                    </a>
+                    <button
+                      class="form__button--reverse"
+                      href="#"
+                      @click.prevent="prev()"
+                    >
+                      Previous
+                    </button>
                   </span>
                 </p>
               </div>
@@ -130,8 +145,15 @@
                 <p class="cta-color">
                   <span class="text"></span>
                   <span class="link_wrap">
-                    <input type="submit" value="Next" class="link_text" />
-                    <span class="arrow-next"></span>
+                    <div class="register-btn">
+                      <button
+                        type="submit"
+                        value="Find diagnostic"
+                        class="form__button"
+                      >
+                        Find diagnostic
+                      </button>
+                    </div>
                   </span>
                 </p>
               </div>
@@ -141,40 +163,24 @@
       </transition>
       <transition name="slide-fade">
         <section v-show="step === 3">
-          <form class="form" action="#" @submit.prevent="customerRegister">
-            <div class="form-group">
-              <input
-                type="email"
-                v-model="customer.eMail"
-                autocomplete="customer.eMail"
-                placeholder="Email"
-                required
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="date"
-                v-model="customer.birthDay"
-                placeholder="Birthday ('day'/'month'/'year')"
-                required
-              />
-            </div>
+          <div class="form__heading">
+            {{ customer.firstName }}, your diagnosic is common cold.
+          </div>
 
-            <div class="form-group cta-step">
-              <div class="cta prev">
-                <p class="cta-color">
-                  <span class="link_wrap">
-                    <a class="link_text" href="#" @click.prevent="prev()"
-                      ><span class="arrow-prev"></span>Previous
-                    </a>
-                  </span>
-                </p>
-              </div>
+          <div class="form-group cta-step">
+            <div class="cta prev">
+              <p class="cta-color">
+                <span class="link_wrap">
+                  <buton
+                    class="form__button--reverse"
+                    href="#"
+                    @click.prevent="prev()"
+                    >Previous
+                  </buton>
+                </span>
+              </p>
             </div>
-            <div class="register-btn">
-              <input type="submit" value="Find diagnostic" />
-            </div>
-          </form>
+          </div>
         </section>
       </transition>
     </section>
@@ -199,7 +205,7 @@
 import symptomDataJSON from "../data/symptoms.json";
 
 export default {
-  name: "DiagnosePage",
+  name: "QuestionWizard",
   data: () => {
     return {
       symptomsData: symptomDataJSON,
@@ -282,7 +288,7 @@ export default {
 <style lang="scss">
 /* VARIABLES */
 /* COLORS */
-$brand-primary: #cecece;
+$brand-primary: $secondary;
 $brand-secondary: #dedc00;
 $brand-lemon: #fff219;
 $brand-quaternary: #f282a5;
@@ -291,10 +297,10 @@ $brand-coral: rgb(250, 90, 85);
 $brand-paprika: rgb(205, 0, 125);
 $color-white: #fff;
 $color-dark: #676767;
-$color-gray: #cecece;
+$color-gray: $secondary;
 $color-lightgray: #ededed;
 $color-jungle: #fff;
-$color-black: $black;
+$black: $black;
 
 /* FONT */
 $font-montserrat: "Montserrat", sans-serif;
@@ -316,7 +322,7 @@ body {
   h1 {
     text-align: center;
     margin-top: 2rem;
-    color: $color-black;
+    color: $black;
   }
 
   p {
@@ -339,17 +345,22 @@ body {
 }
 
 .register {
+  font-family: "interstate", sans-serif !important;
   display: block;
-  color: $color-black;
+  color: $black;
   max-width: 840px;
-  margin: 15rem auto;
+  margin: 80px auto;
   padding: 2rem;
   border-radius: 4rem;
-  border: 1px solid $color-black;
+  border: 1px solid $secondary;
+
+  .cta {
+    margin-top: 20px;
+  }
 
   &-icon {
     display: flex;
-    background: $color-black;
+    background: $black;
     border-radius: 2rem;
     width: 50px;
     height: 50px;
@@ -367,7 +378,7 @@ body {
     text-transform: uppercase;
     letter-spacing: 0.2rem;
     text-align: center;
-    color: $color-black;
+    color: $black;
     padding: 0 2rem;
     margin-top: 2rem;
   }
@@ -387,7 +398,9 @@ body {
       height: 2px;
       top: calc(50% - 1px);
       background: $color-gray;
-      width: calc(100% - 20px);
+      width: calc(100% - 46px);
+      opacity: 0.3;
+      left: 25px;
     }
 
     .step {
@@ -397,22 +410,25 @@ body {
       z-index: 2;
       border: 2px solid $color-gray;
       color: $color-gray;
-      background-color: $color-black;
+      background-color: $white;
       border-radius: 50%;
       min-width: 25px;
       min-height: 25px;
       line-height: 20px;
       font-size: 16px;
+      opacity: 0.3;
 
       &-active {
         color: $brand-primary;
-        background-color: $color-black;
+        background-color: $white;
         border-color: $brand-primary;
+        opacity: 1;
       }
 
       &-done {
-        color: #a7e4b5;
-        border-color: #a7e4b5;
+        border: 2px solid $color-gray;
+        color: $color-gray;
+        background-color: $white;
       }
 
       &-number {
@@ -425,6 +441,118 @@ body {
   }
 
   .form {
+    &__heading {
+      margin-bottom: 20px;
+      font-family: "interstate", sans-serif;
+      font-size: 20px;
+      line-height: 30px;
+      text-align: center;
+    }
+    &__symptoms {
+      margin-top: 20px;
+      font-family: "interstate", sans-serif;
+      font-size: 20px;
+      line-height: 30px;
+      &-text {
+        display: flex;
+        &::before {
+          /*Add another block-level blank space*/
+          content: "";
+          display: block;
+          margin-right: 10px;
+
+          /*Make it a small rectangle so the border will create an L-shape*/
+          width: 8px;
+          height: 20px;
+
+          /*Add a white border on the bottom and left, creating that 'L' */
+          border: solid $secondary;
+          border-width: 0 3px 3px 0;
+
+          /*Rotate the L 45 degrees to turn it into a checkmark*/
+          transform: rotate(45deg);
+        }
+      }
+    }
+    &__button {
+      position: relative;
+      display: block;
+      overflow: hidden;
+      width: fit-content;
+      padding: 10px 25px;
+      max-width: 250px;
+      margin: 1rem auto;
+      text-transform: uppercase;
+      font-weight: 600;
+      border: 1px solid $tertiary;
+      color: $tertiary;
+      transition: 0.5s ease-in-out;
+      z-index: 100;
+      font-family: "interstate", sans-serif;
+      cursor: pointer;
+
+      &--reverse {
+        position: relative;
+        display: block;
+        overflow: hidden;
+        width: fit-content;
+        padding: 10px 25px;
+        max-width: 250px;
+        margin: 1rem auto;
+        text-transform: uppercase;
+        font-weight: 600;
+        border: 1px solid $tertiary;
+        color: $tertiary;
+        transition: 0.5s ease-in-out;
+        z-index: 100;
+        cursor: pointer;
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          background-color: $tertiary;
+          transform: translateX(100%);
+          transition: 0.5s ease-in-out;
+          z-index: -1;
+        }
+
+        &:hover {
+          color: $white;
+          &::before {
+            transform: translateX(0);
+          }
+        }
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: $tertiary;
+        transform: translateX(-100%);
+        transition: 0.5s ease-in-out;
+        z-index: -1;
+
+        &:hover {
+          transform: translateX(0);
+        }
+      }
+
+      &:hover {
+        color: $white;
+
+        &::before {
+          transform: translateX(0);
+        }
+      }
+    }
     &__grid {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
@@ -448,26 +576,13 @@ body {
       }
 
       &.cta-step {
-        color: $color-black;
+        color: $black;
         justify-content: space-between;
-
-        .cta.prev {
-          padding: 10px 30px;
-        }
       }
 
       &.new-password {
         margin-top: 2rem;
       }
-    }
-
-    .cta-color,
-    .cta-color input,
-    .cta-color .link_text {
-      color: $color-black;
-      font-family: $font-montserrat;
-      font-size: 1.1rem;
-      text-decoration: none;
     }
 
     .cta-color .link_wrap {
@@ -525,7 +640,7 @@ body {
     width: 100%;
     margin: 0.5rem;
     background-color: transparent;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid #ba4130;
   }
 
   input[type="submit"] {
@@ -558,7 +673,7 @@ body {
   }
 
   &-btn input {
-    color: $color-black;
+    color: $black;
     font-size: 1.2rem;
     font-family: $font-montserrat;
     font-weight: 800;
@@ -589,7 +704,7 @@ body {
 }
 
 .congrats {
-  background: $color-black;
+  background: $black;
   color: $brand-primary;
   padding: 4rem;
   text-align: center;
@@ -601,5 +716,34 @@ body {
       font-size: 2rem;
     }
   }
+}
+
+.v-expansion-panel-header {
+  color: $white;
+  font-family: "interstate", sans-serif;
+  font-size: 20px;
+  line-height: 30px;
+}
+
+.v-expansion-panel-content__wrap {
+  font-family: "interstate", sans-serif;
+}
+
+.mdi-chevron-down {
+  color: $white !important;
+}
+
+.v-expansion-panel-header__icon {
+  position: absolute !important;
+  right: 20px !important;
+}
+
+.v-expansion-panel::before {
+  box-shadow: none !important;
+}
+
+.v-input--selection-controls .v-input__slot > .v-label,
+.v-input--selection-controls .v-radio > .v-label {
+  color: $black;
 }
 </style>

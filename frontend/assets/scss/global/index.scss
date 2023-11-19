@@ -20,8 +20,16 @@ body {
   font-size: $font-size--sm; */
   overflow: hidden;
   overflow-y: visible;
-  color: #000;
+  color: $black;
   min-height: 100vh;
   background: #fff;
   scroll-behavior: smooth;
 }
+
+.container--wide {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 120px;
+}
+
+

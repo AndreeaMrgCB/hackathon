@@ -61,6 +61,7 @@ export default {
     scss: [
       './assets/scss/mixins/*.scss',
       './assets/scss/global/_breakpoints.scss',
+      './assets/scss/global/_colours.scss'
     ],
   },
 
