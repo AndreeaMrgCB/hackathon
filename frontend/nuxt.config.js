@@ -1,8 +1,8 @@
-import axios from 'axios'
+// import axios from 'axios'
 
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
-  ssr: true,
+  ssr: false,
 
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
@@ -102,7 +102,7 @@ export default {
     postcss: null,
   },
 
-  generate: {
+/*   generate: {
     fallback: '404.html',
     routes: async () => {
       const settings = await axios
@@ -139,7 +139,7 @@ export default {
 
       return ['/preview', ...routes]
     },
-  },
+  }, */
 
   server: {
     host: '0.0.0.0',

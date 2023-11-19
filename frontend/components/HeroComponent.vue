@@ -2,6 +2,7 @@
   <div>
     <div class="hero container--wide">
       <div class="hero__content">
+        <span class="branding">Health Detective</span>
         <h1 class="hero__text">
           Input <br />Discover <br /><span class="hero__highlight"
             >Empower Your Health</span
@@ -17,18 +18,6 @@
         >
       </div>
       <div class="hero__image"></div>
-    </div>
-    <section class="description">
-      <p class="description__paragraph container--wide">
-        Input your symptoms effortlessly, and discover instant insights to
-        empower your health decisions. Say goodbye to uncertainties and hello to
-        a healthier, more confident you. Embrace the everyday journey to
-        well-being with our intuitive platform – because your health matters,
-        every day.
-      </p>
-    </section>
-    <div id="question-wizard">
-    <QuestionWizard />
     </div>
   </div>
 </template>
@@ -46,6 +35,11 @@ export default {
   align-items: center;
   margin-top: 60px;
 
+  @include media-breakpoint-down(md) {
+    margin-top: 10px;
+    padding-right: 0;
+  }
+
   &__highlight {
     // background-color: $primary;
     color: $secondary;
@@ -59,20 +53,35 @@ export default {
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
+
+    @include media-breakpoint-down(md) {
+      flex: 100%;
+      height: 440px;
+    }
   }
 
   &__content {
     position: relative;
     z-index: 99999;
     flex: 1 0 50%;
+    background-color: transparent;
+
+    @include media-breakpoint-down(md) {
+      flex: 100%;
+    }
   }
 
   &__text {
     font-family: "obvia", serif;
     font-size: 50px;
     margin-bottom: 50px;
+    margin-top: 20px;
     max-width: 600px;
     text-transform: uppercase;
+
+    @include media-breakpoint-down(md) {
+      font-size: 25px;
+    }
   }
 
   &__paragraph {
@@ -93,7 +102,7 @@ export default {
     margin: 15px 0;
     min-width: 150px;
     padding: 5px;
-    font-family: 'interstate', sans-serif;;
+    font-family: "interstate", sans-serif;
 
     span {
       position: relative;
@@ -164,17 +173,5 @@ export default {
       }
     }
   }
-}
-
-.description {
-  text-align: center;
-  margin: 0 auto;
-  background-color: $tertiary;
-  color: $white;
-  padding-top: 60px;
-  padding-bottom: 60px;
-  font-family: 'interstate', sans-serif;
-  font-size: 20px;
-  line-height: 30px;
 }
 </style>

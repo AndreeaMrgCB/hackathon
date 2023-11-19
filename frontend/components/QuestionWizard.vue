@@ -3,13 +3,6 @@
     <section class="pen-description">
     </section>
     <section class="register" v-if="!hasSeenCongrats">
-      <div class="register-icon">
-        <img
-          class="register-icon-item"
-          src="https://vuejs.org/images/logo.png"
-          alt="vue logo"
-        />
-      </div>
 
       <h2 class="register-title">Your details</h2>
 
@@ -171,12 +164,12 @@
             <div class="cta prev">
               <p class="cta-color">
                 <span class="link_wrap">
-                  <buton
+                  <button
                     class="form__button--reverse"
                     href="#"
                     @click.prevent="prev()"
                     >Previous
-                  </buton>
+                  </button>
                 </span>
               </p>
             </div>
@@ -210,6 +203,7 @@ export default {
     return {
       symptomsData: symptomDataJSON,
       selectedSymptoms: [],
+      selectedGender: '',
       steps: {},
       step: 1,
       customer: {
@@ -720,9 +714,9 @@ body {
 
 .v-expansion-panel-header {
   color: $white;
-  font-family: "interstate", sans-serif;
-  font-size: 20px;
-  line-height: 30px;
+  font-family: "interstate", sans-serif !important;
+  font-size: 20px !important;
+  line-height: 30px !important;
 }
 
 .v-expansion-panel-content__wrap {

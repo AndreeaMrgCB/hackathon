@@ -2,11 +2,11 @@
   <div class="heading__wrapper word-rotator">
     <div class="heading heading--sm" :class="{ text: words.length }">
       <h2 v-if="heading">{{ heading }}</h2>
-      <h3 v-if="words.length">
+      <h2 v-if="words.length">
         <span v-for="(word, i) in words" :key="i" ref="word" class="word">{{
           word
         }}</span>
-      </h3>
+      </h2>
     </div>
   </div>
 </template>
@@ -21,14 +21,13 @@ export default {
       default: "",
     },
     words: {
-        type: Array,
-        default: () => ["Adults", "Children", "Parents", "Seniors", "YOU"],
-    }
+      type: Array,
+      default: () => ["Adults", "Children", "Parents", "Seniors", "YOU"],
+    },
   },
 
   data() {
-    return {
-    };
+    return {};
   },
 
   mounted() {
@@ -104,6 +103,10 @@ export default {
   align-items: center;
   margin-top: 15px;
 
+  @include media-breakpoint-down(md) {
+    position: relative;
+  }
+
   .text {
     margin-top: 0;
     display: flex;
@@ -135,6 +138,12 @@ export default {
     opacity: 0;
     text-align: center;
     color: $primary;
+
+    @include media-breakpoint-down(md) {
+      width: fit-content;
+      bottom: 25px;
+      left: 10px;
+    }
   }
 
   .letter {
