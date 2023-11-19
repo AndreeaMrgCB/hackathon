@@ -148,7 +148,8 @@ export default {
       content: "";
     }
 
-    &:hover {
+    &:hover,
+    &:focus {
       outline: 0 !important;
       outline-offset: 0;
 

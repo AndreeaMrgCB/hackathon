@@ -1,9 +1,7 @@
 <template>
   <div data-app>
-    <section class="pen-description">
-    </section>
+    <section class="pen-description"></section>
     <section class="register" v-if="!hasSeenCongrats">
-
       <h2 class="register-title">Your details</h2>
 
       <div class="register-stepper">
@@ -43,6 +41,12 @@
                 label="Female"
                 value="Female"
               ></v-checkbox>
+              <v-checkbox
+                v-model="selectedGender"
+                color="#ba4130"
+                label="Prefer not to say"
+                value="Prefer not to say"
+              ></v-checkbox>
             </div>
 
             <div class="form-group">
@@ -76,7 +80,12 @@
           <div class="form__heading">
             What are your symptons, {{ customer.firstName }}?
           </div>
-          <form class="form" method="post" action="#" @submit.prevent="next">
+          <form
+            class="form"
+            method="post"
+            action="#"
+            @submit.prevent="findDiagnostic()"
+          >
             <div class="form-group">
               <v-expansion-panels>
                 <v-expansion-panel
@@ -106,17 +115,30 @@
                 </v-expansion-panel>
               </v-expansion-panels>
             </div>
+            <div class="form__search">
+              <v-autocomplete
+                v-model="selectedSymptoms"
+                :items="search"
+                multiple
+                color="#ba4130"
+                chips
+                closable-chips
+                deletable-chips
+                label="Search for a symptom..."
+              >
+              </v-autocomplete>
+            </div>
             <div v-if="selectedSymptoms.length" class="form__symptoms">
               <div>
                 <span>Your Symptoms are:</span>
                 <span>
-                  <div
+                  <v-chips
                     v-for="(selected, i) in selectedSymptoms"
                     :key="i"
                     class="form__symptoms-text"
                   >
                     {{ selected }}
-                  </div></span
+                  </v-chips></span
                 >
               </div>
             </div>
@@ -157,7 +179,7 @@
       <transition name="slide-fade">
         <section v-show="step === 3">
           <div class="form__heading">
-            {{ customer.firstName }}, your diagnosic is common cold.
+            {{ customer.firstName }}, your diagnosis is {{ diagnostic }}.
           </div>
 
           <div class="form-group cta-step">
@@ -168,7 +190,8 @@
                     class="form__button--reverse"
                     href="#"
                     @click.prevent="prev()"
-                    >Previous
+                  >
+                    Previous
                   </button>
                 </span>
               </p>
@@ -176,20 +199,6 @@
           </div>
         </section>
       </transition>
-    </section>
-    <section class="congrats register" v-if="hasSeenCongrats">
-      <div class="register-icon">
-        <img
-          class="register-icon-item"
-          src="https://vuejs.org/images/logo.png"
-          alt="vue logo"
-        />
-      </div>
-      <h2 class="congrats-title">Thank you !</h2>
-      <p class="congrats-subtitle">
-        You have successfully created your account and joined the<br />
-        <strong>VueJS<br />multiple steps form</strong>
-      </p>
     </section>
   </div>
 </template>
@@ -203,9 +212,10 @@ export default {
     return {
       symptomsData: symptomDataJSON,
       selectedSymptoms: [],
-      selectedGender: '',
+      selectedGender: "",
       steps: {},
       step: 1,
+      diagnostic: "common cold",
       customer: {
         gender: "1",
         firstName: "",
@@ -247,6 +257,7 @@ export default {
           ],
         },
       ],
+      isEditing: false,
       hasSeenCongrats: false,
       tempCustomer: {
         gender: "",
@@ -261,6 +272,91 @@ export default {
         pinCode: "",
         eMail: "",
       },
+      search: [
+        "Itching",
+        "Skin Rash",
+        "Nodal Skin Eruptions",
+        "Ulcers on Tongue",
+        "Patches in Throat",
+        "Yellowish Skin",
+        "Dark Urine",
+        "Yellowing of Eyes",
+        "Red Spots Over Body",
+        "Dischromic Patches",
+        "Watering from Eyes",
+        "Blackheads",
+        "Scurring",
+        "Skin Peeling",
+        "Blister",
+        "Joint Pain",
+        "Muscle Wasting",
+        "Weakness in Limbs",
+        "Stiff Neck",
+        "Swelling Joints",
+        "Movement Stiffness",
+        "Pain During Bowel Movements",
+        "Neck Pain",
+        "Knee Pain",
+        "Muscle Weakness",
+        "Chest Pain",
+        "Fast Heart Rate",
+        "Breathlessness",
+        "Pain Behind the Eyes",
+        "Back Pain",
+        "Stomach Pain",
+        "Acidity",
+        "Vomiting",
+        "Burning Micturition",
+        "Spotting Urination",
+        "Indigestion",
+        "Abdominal Pain",
+        "Constipation",
+        "Diarrhoea",
+        "Nausea",
+        "Loss of Appetite",
+        "Foul Smell of Urine",
+        "Passage of Gases",
+        "Swelled Lymph Nodes",
+        "Blurred and Distorted Vision",
+        "Phlegm",
+        "Throat Irritation",
+        "Dizziness",
+        "Cramps",
+        "Excessive Hunger",
+        "Toxic Look (Typhos)",
+        "Depression",
+        "Irritability",
+        "Muscle Pain",
+        "Rusty Sputum",
+        "Lack of Concentration",
+        "Visual Disturbances",
+        "Blood in Sputum",
+        "Pus Filled Pimples",
+        "Fatigue",
+        "Weight Gain",
+        "Anxiety",
+        "Mood Swings",
+        "Weight Loss",
+        "Restlessness",
+        "Lethargy",
+        "Cough",
+        "High Fever",
+        "Sunken Eyes",
+        "Sweating",
+        "Dehydration",
+        "Headache",
+        "Yellow Urine",
+        "Acute Liver Failure",
+        "Fluid Overload",
+        "Swelling of Stomach",
+        "Malaise",
+        "Blood in Sputum",
+        "Family History",
+        "Mucoid Sputum",
+        "Family History",
+        "Blood in Sputum",
+        "Pus Filled Pimples",
+      ],
     };
   },
   methods: {
@@ -270,6 +366,85 @@ export default {
 
     next() {
       this.step++;
+    },
+
+    findDiagnostic() {
+      this.step++;
+      if (
+        this.selectedSymptoms.includes("Itching") &&
+        this.selectedSymptoms.includes("Skin Rash")
+      ) {
+        console.log("true");
+        this.diagnostic = "Contact Dermatitis";
+      } else if (
+        this.selectedSymptoms.includes("Joint Pain") &&
+        this.selectedSymptoms.includes("Swelling Joints")
+      ) {
+        this.diagnostic = "Rheumatoid Arthritis";
+      } else if (
+        this.selectedSymptoms.includes("Muscle Weakness") &&
+        this.selectedSymptoms.includes("Fatigue")
+      ) {
+        this.diagnostic = "Chronic Fatigue Syndrome";
+      } else if (
+        this.selectedSymptoms.includes("Cough") &&
+        this.selectedSymptoms.includes("Fever")
+      ) {
+        this.diagnostic = "Influenza (Flu)";
+      } else if (
+        this.selectedSymptoms.includes("Headache") &&
+        this.selectedSymptoms.includes("Nausea")
+      ) {
+        this.diagnostic = "Migraine";
+      } else if (
+        this.selectedSymptoms.includes("Acidity") &&
+        this.selectedSymptoms.includes("Stomach Pain")
+      ) {
+        this.diagnostic = "Gastric Ulcer";
+      } else if (
+        this.selectedSymptoms.includes("Dizziness") &&
+        this.selectedSymptoms.includes("Sweating")
+      ) {
+        this.diagnostic = "Heat Exhaustion";
+      } else if (
+        this.selectedSymptoms.includes("Breathlessness") &&
+        this.selectedSymptoms.includes("Chest Pain")
+      ) {
+        this.diagnostic = "Angina";
+      } else if (
+        this.selectedSymptoms.includes("Depression") &&
+        this.selectedSymptoms.includes("Irritability")
+      ) {
+        this.diagnostic = "Major Depressive Disorder";
+      } else if (
+        this.selectedSymptoms.includes("Weight Gain") &&
+        this.selectedSymptoms.includes("Fatigue")
+      ) {
+        this.diagnostic = "Hypothyroidism";
+      } else if (
+        this.selectedSymptoms.includes("Weight Loss") &&
+        this.selectedSymptoms.includes("Loss of Appetite")
+      ) {
+        this.diagnostic = "Hyperthyroidism";
+      } else if (
+        this.selectedSymptoms.includes("Cough") &&
+        this.selectedSymptoms.includes("Blood in Sputum")
+      ) {
+        this.diagnostic = "Tuberculosis";
+      } else if (
+        this.selectedSymptoms.includes("Swelling of Stomach") &&
+        this.selectedSymptoms.includes("Fluid Overload")
+      ) {
+        this.diagnostic = "Congestive Heart Failure";
+      } else if (
+        this.selectedSymptoms.includes("Pain Behind the Eyes") &&
+        this.selectedSymptoms.includes("Yellowing of Eyes")
+      ) {
+        this.diagnostic = "Hepatitis A";
+      } else {
+        this.diagnostic =
+          "inconclusive. Please speak to a doctor or add more symptoms";
+      }
     },
 
     customerRegister() {
@@ -347,6 +522,10 @@ body {
   padding: 2rem;
   border-radius: 4rem;
   border: 1px solid $secondary;
+
+  .v-select.v-text-field:not(.v-text-field--single-line) input {
+    border: none;
+  }
 
   .cta {
     margin-top: 20px;
@@ -434,7 +613,14 @@ body {
     }
   }
 
+  .v-autocomplete__content.v-menu__content {
+    z-index: 100 !important;
+  }
+
   .form {
+    &__search {
+      margin-top: 30px;
+    }
     &__heading {
       margin-bottom: 20px;
       font-family: "interstate", sans-serif;
@@ -481,7 +667,7 @@ body {
       border: 1px solid $tertiary;
       color: $tertiary;
       transition: 0.5s ease-in-out;
-      z-index: 100;
+      z-index: 2;
       font-family: "interstate", sans-serif;
       cursor: pointer;
 
@@ -498,7 +684,7 @@ body {
         border: 1px solid $tertiary;
         color: $tertiary;
         transition: 0.5s ease-in-out;
-        z-index: 100;
+        z-index: 2;
         cursor: pointer;
 
         &::before {
@@ -514,7 +700,8 @@ body {
           z-index: -1;
         }
 
-        &:hover {
+        &:hover,
+        &:focus {
           color: $white;
           &::before {
             transform: translateX(0);
@@ -539,7 +726,8 @@ body {
         }
       }
 
-      &:hover {
+      &:hover,
+      &:focus {
         color: $white;
 
         &::before {
